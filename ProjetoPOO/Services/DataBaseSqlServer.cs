@@ -128,5 +128,38 @@ namespace ProjetoPOO.Services
                     "Mensagem original: " + ex.Message);
             }
         }
+
+        //Método publico que executa comando SELECT no banco de dados
+        //Retorna apenas a primeira coluna da primeira linha do banco
+        public object ExecutarConsultaScalar(CommandType commandType,
+            string nomeStoredProcedureOuTextpSql)
+        {
+            try
+            {
+                SqlConnection sqlConnection = CriarConexao();
+                SqlCommand sqlCommand = sqlConnection.CreateCommand();
+
+                sqlCommand.CommandType = commandType;
+                sqlCommand.CommandText = nomeStoredProcedureOuTextpSql;
+
+                foreach (SqlParameter sqlParameter
+                    in sqlParameterCollection)
+                {
+                    sqlCommand.Parameters.Add(
+                        new SqlParameter(sqlParameter.ParameterName,
+                                            sqlParameter.Value));
+                }
+
+                return sqlCommand.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                //Retorno o erro a onde o Método foi chamado
+                throw new Exception("Houve uma falha ao execuar o " +
+                    "comando no banco de dados.\r\n" +
+                    "Mensagem original: " + ex.Message);
+            }
+        }
+
     }
 }
