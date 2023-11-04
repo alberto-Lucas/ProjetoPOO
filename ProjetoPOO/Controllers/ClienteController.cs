@@ -55,5 +55,133 @@ namespace ProjetoPOO.Controllers
         }
         #endregion
 
+        #region Alterar
+        //Método public alterar
+        public int Alterar(Cliente cliente)
+        {
+            string queryAlterar =
+                "UPDATE cliente SET " +
+                "nome = @Nome, " +
+                "rg = @RG, " +
+                "cpf = @CPF, " +
+                "data_nascimento = @DataNascimento, " +
+                "telefone = @telefone " +
+                "WHERE id_cliente = @IdCliente";
+
+            dataBase.LimparParametros();
+            dataBase.AdicionarParametros("@Nome", cliente.Nome);
+            dataBase.AdicionarParametros("@RG", cliente.RG);
+            dataBase.AdicionarParametros("@CPF", cliente.CPF);
+            dataBase.AdicionarParametros("@DataNascimento", cliente.DtNascimento);
+            dataBase.AdicionarParametros("@Telefone", cliente.Telefone);
+            dataBase.AdicionarParametros("@IdCliente", cliente.IdCliente);
+
+            return dataBase.ExececutarManipulacao(
+                CommandType.Text, queryAlterar);
+        }
+        #endregion
+
+        #region Apagar
+        public int Apagar(int IdCliente)
+        {
+            string queryApagar =
+                "DELETE FROM cliente " +
+                "WHERE id_cliente = @IdCliente";
+
+            dataBase.LimparParametros();
+            dataBase.AdicionarParametros("@IdCliente", IdCliente);
+
+            return dataBase.ExececutarManipulacao(
+                CommandType.Text, queryApagar);
+        }
+        #endregion
+
+        #region ConsultarPorNome
+        public ClienteCollection ConsultarPorNome(string nome)
+        {
+            ClienteCollection clienteColecao = new ClienteCollection();
+            string query =
+                "SLECT * FROM cliente " +
+                "WHERE nome LIKE '%' + @Nome + '%'";
+
+            dataBase.LimparParametros();
+            dataBase.AdicionarParametros("@Nome", nome.Trim());
+
+            DataTable dataTable = dataBase.ExecutarConsulta(
+                CommandType.Text, query);
+            //Neste momento o SELECT foi executado 
+            //E o banco retornou um DataTable
+            //Agora precisamos converter esse DataTable
+            //para ClienteCollection
+
+            foreach(DataRow dataRow in dataTable.Rows)
+            {
+                Cliente cliente = new Cliente();
+                //Agora vou indetificar o valor da linha na coluna
+                //e atribuir ao objeto
+                //Todo dado precisa ser convertido
+                //do SQL Server para C#
+                cliente.IdCliente = Convert.ToInt32(dataRow["id_cliente"]);
+                cliente.Nome = Convert.ToString(dataRow["nome"]);
+                cliente.RG = Convert.ToString(dataRow["rg"]);
+                cliente.CPF = Convert.ToString(dataRow["cpf"]);
+                //Somente irei popular o atributo DtNascimento
+                //Se o valor no banco de dados 
+                //não estiver NULL
+                if(!(dataRow["data_nascimento"] is DBNull))
+                    cliente.DtNascimento = 
+                        Convert.ToDateTime(dataRow["data_nascimento"]);
+                cliente.Telefone = Convert.ToString(dataRow["telefone"]);
+
+                //Adicione o objeto cliente na Coleção de Clientes
+                //Ou seja cada linha retorna será um objeto
+                //E a Collection tera um objeto de cada linha
+                clienteColecao.Add(cliente);
+            }
+            return clienteColecao;
+        }
+        #endregion
+
+        #region ConsultarPorId
+        public Cliente ConsultarPorId(int IdCliente)
+        {
+            string query =
+                "SLECT * FROM cliente " +
+                "WHERE id_cliente = @IdCliente";
+
+            dataBase.LimparParametros();
+            dataBase.AdicionarParametros("@IdCliente", IdCliente);
+
+            DataTable dataTable = dataBase.ExecutarConsulta(
+                CommandType.Text, query);
+
+            if (dataTable.Rows.Count > 0)
+            {
+                Cliente cliente = new Cliente();
+                //Agora vou indetificar o valor da linha na coluna
+                //e atribuir ao objeto
+                //Todo dado precisa ser convertido
+                //do SQL Server para C#
+                cliente.IdCliente = Convert.ToInt32(dataTable.Rows[0]["id_cliente"]);
+                cliente.Nome = Convert.ToString(dataTable.Rows[0]["nome"]);
+                cliente.RG = Convert.ToString(dataTable.Rows[0]["rg"]);
+                cliente.CPF = Convert.ToString(dataTable.Rows[0]["cpf"]);
+                //Somente irei popular o atributo DtNascimento
+                //Se o valor no banco de dados 
+                //não estiver NULL
+                if (!(dataTable.Rows[0]["data_nascimento"] is DBNull))
+                    cliente.DtNascimento =
+                        Convert.ToDateTime(dataTable.Rows[0]["data_nascimento"]);
+                cliente.Telefone = Convert.ToString(dataTable.Rows[0]["telefone"]);
+
+                //Adicione o objeto cliente na Coleção de Clientes
+                //Ou seja cada linha retorna será um objeto
+                //E a Collection tera um objeto de cada linha
+                return cliente;
+            }
+            else
+                return null;
+        }
+        #endregion
     }
 }
