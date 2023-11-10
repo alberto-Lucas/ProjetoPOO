@@ -1,0 +1,9 @@
+C:\ProjetoPOO\ProjetoPOO\bin\Debug\ProjetoPOO.exe
+C:\ProjetoPOO\ProjetoPOO\bin\Debug\ProjetoPOO.pdb
+C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.csproj.AssemblyReference.cache
+C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.Properties.Resources.resources
+C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.Views.frmClienteSelecaoView.resources
+C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.csproj.GenerateResource.cache
+C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.csproj.CoreCompileInputs.cache
+C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.exe
+C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.pdb
