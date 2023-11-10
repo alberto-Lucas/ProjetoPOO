@@ -101,7 +101,7 @@ namespace ProjetoPOO.Controllers
         {
             ClienteCollection clienteColecao = new ClienteCollection();
             string query =
-                "SLECT * FROM cliente " +
+                "SELECT * FROM cliente " +
                 "WHERE nome LIKE '%' + @Nome + '%'";
 
             dataBase.LimparParametros();
@@ -146,7 +146,7 @@ namespace ProjetoPOO.Controllers
         public Cliente ConsultarPorId(int IdCliente)
         {
             string query =
-                "SLECT * FROM cliente " +
+                "SELECT * FROM cliente " +
                 "WHERE id_cliente = @IdCliente";
 
             dataBase.LimparParametros();

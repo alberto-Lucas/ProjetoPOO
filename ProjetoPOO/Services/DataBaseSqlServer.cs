@@ -14,9 +14,18 @@ namespace ProjetoPOO.Services
             SqlConnection conexao = new SqlConnection();
 
             conexao.ConnectionString =
+
+                //Se esse primeiro falhar
+                //tento o segundo
+                /*
                 "Data Source=127.0.0.1;" +
                 "Initial Catalog=pooCamadas;" +
-                "Integrated Security=SSPI;";
+                "Integrated Security=SSPI;";*/
+
+                "Data Source=.\\SQLExpress;" +
+                "Initial Catalog=pooCamadas;" +
+                "Integrated Security=SSPI;" +
+                "User Instance = false;";
 
             conexao.Open();
             return conexao;
