@@ -39,6 +39,7 @@ namespace ProjetoPOO.Views
             this.IDCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPesquisar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistros)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@ namespace ProjetoPOO.Views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPesquisa.Location = new System.Drawing.Point(12, 29);
             this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(776, 22);
+            this.txtPesquisa.Size = new System.Drawing.Size(675, 22);
             this.txtPesquisa.TabIndex = 1;
             // 
             // dgvRegistros
@@ -141,11 +142,23 @@ namespace ProjetoPOO.Views
             this.Telefone.MinimumWidth = 6;
             this.Telefone.Name = "Telefone";
             // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPesquisar.Location = new System.Drawing.Point(693, 29);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(95, 23);
+            this.btnPesquisar.TabIndex = 7;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
             // frmClienteSelecaoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnExcluir);
@@ -173,5 +186,6 @@ namespace ProjetoPOO.Views
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefone;
+        private System.Windows.Forms.Button btnPesquisar;
     }
 }

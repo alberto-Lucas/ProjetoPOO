@@ -14,7 +14,7 @@ namespace ProjetoPOO.Services
             SqlConnection conexao = new SqlConnection();
 
             conexao.ConnectionString =
-                "Data Source=localhost;" +
+                "Data Source=127.0.0.1;" +
                 "Initial Catalog=pooCamadas;" +
                 "Integrated Security=SSPI;";
 
