@@ -78,5 +78,54 @@ namespace ProjetoPOO.Views
         {
             Pesquisar();
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            Excluir();
+        }
+
+        private void Excluir()
+        {
+            //Para excluir um registro
+            //Eu preciso primeiro selecionar um dos registro
+            //np DataGrid
+            //Ou seja precisamo verificar se possui algum registro
+            //selecionado na Grade
+            //Sempre confirmar a exclusão do registro
+            //Nunca excluir diretamente
+
+            if(dgvRegistros.SelectedRows.Count == 0)
+                MessageBox.Show("Nenhum registro selecionado.",
+                    "Informação", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            else
+            {
+                if(MessageBox.Show(
+                    "Deseja realmente excluir o registro?",
+                    "Confirmação", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    //A rotina Excluir espera o ID do registro
+                    //como parametro, ou seja
+                    //Para executar a exclusão do registro, é 
+                    //preciso identificar o ID do registro selecionado
+                    Cliente clienteSelecionado =
+                        (dgvRegistros.SelectedRows[0].DataBoundItem as Cliente);
+
+                    ClienteController clienteController = new ClienteController();
+
+                    if(clienteController.Apagar(clienteSelecionado.IdCliente) > 0)
+                        MessageBox.Show("Registro excluído com sucesso.",
+                            "Informação", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Não foi possível excluir o regsitro.",
+                            "Atenção", MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                }
+            }
+
+
+        }
     }
 }
