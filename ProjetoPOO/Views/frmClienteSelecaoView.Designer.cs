@@ -75,6 +75,7 @@ namespace ProjetoPOO.Views
             this.dgvRegistros.Name = "dgvRegistros";
             this.dgvRegistros.RowHeadersWidth = 51;
             this.dgvRegistros.RowTemplate.Height = 24;
+            this.dgvRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRegistros.Size = new System.Drawing.Size(776, 352);
             this.dgvRegistros.TabIndex = 2;
             // 
@@ -108,6 +109,7 @@ namespace ProjetoPOO.Views
             this.btnAlterar.TabIndex = 5;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnCadastrar
             // 
@@ -118,6 +120,7 @@ namespace ProjetoPOO.Views
             this.btnCadastrar.TabIndex = 6;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // IDCliente
             // 
@@ -168,7 +171,9 @@ namespace ProjetoPOO.Views
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.label1);
             this.Name = "frmClienteSelecaoView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmClienteSelecaoView";
+            this.Load += new System.EventHandler(this.frmClienteSelecaoView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistros)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

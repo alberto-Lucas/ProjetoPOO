@@ -114,10 +114,14 @@ namespace ProjetoPOO.Views
 
                     ClienteController clienteController = new ClienteController();
 
-                    if(clienteController.Apagar(clienteSelecionado.IdCliente) > 0)
+                    if (clienteController.Apagar(clienteSelecionado.IdCliente) > 0)
+                    {
                         MessageBox.Show("Registro excluído com sucesso.",
                             "Informação", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
+
+                        Pesquisar();
+                    }
                     else
                         MessageBox.Show("Não foi possível excluir o regsitro.",
                             "Atenção", MessageBoxButtons.OK,
@@ -126,6 +130,27 @@ namespace ProjetoPOO.Views
             }
 
 
+        }
+
+        private void frmClienteSelecaoView_Load(object sender, EventArgs e)
+        {
+            Pesquisar();
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            ChamarTelaCadastro();
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            ChamarTelaCadastro();
+        }
+
+        private void ChamarTelaCadastro()
+        {
+            frmClienteCadastroView frm = new frmClienteCadastroView();
+            frm.ShowDialog();
         }
     }
 }

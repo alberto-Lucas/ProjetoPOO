@@ -7,3 +7,4 @@ C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.csproj.GenerateResource.cache
 C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.csproj.CoreCompileInputs.cache
 C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.exe
 C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.pdb
+C:\ProjetoPOO\ProjetoPOO\obj\Debug\ProjetoPOO.Views.frmClienteCadastroView.resources
