@@ -49,9 +49,9 @@ namespace ProjetoPOO.Controllers
 
             //Executar um comando no banco de dados, para recupear o ID criado
             //pelo Identity
-            //SELECT @@IDENTITY
+            //SELECT MAX(id_cliente) FROM cliente
             return Convert.ToInt32(dataBase.ExecutarConsultaScalar(
-                CommandType.Text, "SELECT @@IDENTITY"));
+                CommandType.Text, "SELECT MAX(id_cliente) FROM cliente"));
         }
         #endregion
 

@@ -42,7 +42,7 @@ namespace ProjetoPOO.Views
             this.mskCPF = new System.Windows.Forms.MaskedTextBox();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -58,6 +58,7 @@ namespace ProjetoPOO.Views
             // 
             this.txtId.Location = new System.Drawing.Point(12, 29);
             this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(100, 22);
             this.txtId.TabIndex = 1;
             // 
@@ -66,7 +67,7 @@ namespace ProjetoPOO.Views
             this.txtNome.Location = new System.Drawing.Point(118, 29);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(465, 22);
-            this.txtNome.TabIndex = 3;
+            this.txtNome.TabIndex = 0;
             // 
             // label2
             // 
@@ -82,7 +83,7 @@ namespace ProjetoPOO.Views
             this.txtRG.Location = new System.Drawing.Point(15, 81);
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(148, 22);
-            this.txtRG.TabIndex = 5;
+            this.txtRG.TabIndex = 1;
             // 
             // label3
             // 
@@ -108,7 +109,7 @@ namespace ProjetoPOO.Views
             this.dtpDtNascimento.Location = new System.Drawing.Point(323, 81);
             this.dtpDtNascimento.Name = "dtpDtNascimento";
             this.dtpDtNascimento.Size = new System.Drawing.Size(113, 22);
-            this.dtpDtNascimento.TabIndex = 8;
+            this.dtpDtNascimento.TabIndex = 3;
             // 
             // label5
             // 
@@ -134,39 +135,40 @@ namespace ProjetoPOO.Views
             this.mskCPF.Mask = "999.999.999-99";
             this.mskCPF.Name = "mskCPF";
             this.mskCPF.Size = new System.Drawing.Size(148, 22);
-            this.mskCPF.TabIndex = 12;
+            this.mskCPF.TabIndex = 2;
             // 
             // btnSalvar
             // 
             this.btnSalvar.Location = new System.Drawing.Point(427, 131);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 13;
+            this.btnSalvar.TabIndex = 5;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(508, 131);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 14;
+            this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtTelefone
             // 
-            this.textBox1.Location = new System.Drawing.Point(442, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 22);
-            this.textBox1.TabIndex = 15;
+            this.txtTelefone.Location = new System.Drawing.Point(442, 83);
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(141, 22);
+            this.txtTelefone.TabIndex = 4;
             // 
             // frmClienteCadastroView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 166);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.mskCPF);
@@ -206,6 +208,6 @@ namespace ProjetoPOO.Views
         private System.Windows.Forms.MaskedTextBox mskCPF;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTelefone;
     }
 }
