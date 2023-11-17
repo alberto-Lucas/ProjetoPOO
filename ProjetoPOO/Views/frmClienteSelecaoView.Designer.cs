@@ -32,14 +32,15 @@ namespace ProjetoPOO.Views
             this.label1 = new System.Windows.Forms.Label();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.dgvRegistros = new System.Windows.Forms.DataGridView();
+            this.IDCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
-            this.IDCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPesquisar = new System.Windows.Forms.Button();
+            this.btnVisualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistros)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,6 +79,31 @@ namespace ProjetoPOO.Views
             this.dgvRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRegistros.Size = new System.Drawing.Size(776, 352);
             this.dgvRegistros.TabIndex = 2;
+            // 
+            // IDCliente
+            // 
+            this.IDCliente.DataPropertyName = "IdCliente";
+            this.IDCliente.HeaderText = "Código";
+            this.IDCliente.MinimumWidth = 6;
+            this.IDCliente.Name = "IDCliente";
+            this.IDCliente.Width = 80;
+            // 
+            // Nome
+            // 
+            this.Nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.FillWeight = 50F;
+            this.Nome.HeaderText = "Nome";
+            this.Nome.MinimumWidth = 6;
+            this.Nome.Name = "Nome";
+            // 
+            // Telefone
+            // 
+            this.Telefone.DataPropertyName = "Telefone";
+            this.Telefone.HeaderText = "Telefone";
+            this.Telefone.MinimumWidth = 6;
+            this.Telefone.Name = "Telefone";
+            this.Telefone.Width = 125;
             // 
             // btnSelecionar
             // 
@@ -122,30 +148,6 @@ namespace ProjetoPOO.Views
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
-            // IDCliente
-            // 
-            this.IDCliente.DataPropertyName = "IdCliente";
-            this.IDCliente.HeaderText = "Código";
-            this.IDCliente.MinimumWidth = 6;
-            this.IDCliente.Name = "IDCliente";
-            this.IDCliente.Width = 80;
-            // 
-            // Nome
-            // 
-            this.Nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nome.DataPropertyName = "Nome";
-            this.Nome.FillWeight = 50F;
-            this.Nome.HeaderText = "Nome";
-            this.Nome.MinimumWidth = 6;
-            this.Nome.Name = "Nome";
-            // 
-            // Telefone
-            // 
-            this.Telefone.DataPropertyName = "Telefone";
-            this.Telefone.HeaderText = "Telefone";
-            this.Telefone.MinimumWidth = 6;
-            this.Telefone.Name = "Telefone";
-            // 
             // btnPesquisar
             // 
             this.btnPesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -157,11 +159,22 @@ namespace ProjetoPOO.Views
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
+            // btnVisualizar
+            // 
+            this.btnVisualizar.Location = new System.Drawing.Point(466, 415);
+            this.btnVisualizar.Name = "btnVisualizar";
+            this.btnVisualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnVisualizar.TabIndex = 8;
+            this.btnVisualizar.Text = "Visualizar";
+            this.btnVisualizar.UseVisualStyleBackColor = true;
+            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
+            // 
             // frmClienteSelecaoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnVisualizar);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.btnAlterar);
@@ -193,5 +206,6 @@ namespace ProjetoPOO.Views
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefone;
         private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.Button btnVisualizar;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ProjetoPOO.Controllers;
 using ProjetoPOO.Models;
+using ProjetoPOO.Services;
 
 namespace ProjetoPOO.Views
 {
@@ -139,18 +140,24 @@ namespace ProjetoPOO.Views
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            ChamarTelaCadastro();
+            ChamarTelaCadastro(AcaoNaTela.Inserir);
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            ChamarTelaCadastro();
+            ChamarTelaCadastro(AcaoNaTela.Alterar);
         }
 
-        private void ChamarTelaCadastro()
+        private void ChamarTelaCadastro(AcaoNaTela acaoTela)
         {
-            frmClienteCadastroView frm = new frmClienteCadastroView();
+            frmClienteCadastroView frm = 
+                new frmClienteCadastroView(acaoTela);
             frm.ShowDialog();
+        }
+
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            ChamarTelaCadastro(AcaoNaTela.Visualizar);
         }
     }
 }

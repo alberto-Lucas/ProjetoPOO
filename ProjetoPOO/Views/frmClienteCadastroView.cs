@@ -8,14 +8,56 @@ using System.Text;
 using System.Windows.Forms;
 using ProjetoPOO.Models;
 using ProjetoPOO.Controllers;
+using ProjetoPOO.Services;
 
 namespace ProjetoPOO.Views
 {
     public partial class frmClienteCadastroView : Form
     {
-        public frmClienteCadastroView()
+        AcaoNaTela acaoSelecionada;
+        Cliente clienteSelecionado;
+        public frmClienteCadastroView(
+            AcaoNaTela acaoTela, Cliente cliente)
         {
             InitializeComponent();
+            acaoSelecionada = acaoTela;
+            clienteSelecionado = cliente;
+
+            if (acaoSelecionada == AcaoNaTela.Inserir)
+                this.Text = "Cadastrar";
+            else
+            {
+                CarregarDados();
+
+                if (acaoSelecionada == AcaoNaTela.Alterar)
+                    this.Text = "Alterar";
+                else
+                {
+                    this.Text = "Visualizar";
+                    DesabilitarCampos();
+                }
+            }
+        }
+
+        private void CarregarDados()
+        {
+            txtId.Text = clienteSelecionado.IdCliente.ToString();
+            txtNome.Text = clienteSelecionado.Nome;
+            txtRG.Text = clienteSelecionado.RG;
+            mskCPF.Text = clienteSelecionado.CPF;
+            dtpDtNascimento.Value = clienteSelecionado.DtNascimento;
+            txtTelefone.Text = clienteSelecionado.Telefone;
+        }
+
+        private void DesabilitarCampos()
+        {
+            txtNome.ReadOnly = true;
+            txtRG.ReadOnly = true;
+            mskCPF.ReadOnly = true;
+            dtpDtNascimento.Enabled = false;
+            txtTelefone.ReadOnly = true;
+            btnSalvar.Visible = false;
+            btnCancelar.Visible = false;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)

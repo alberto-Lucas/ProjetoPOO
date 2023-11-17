@@ -60,6 +60,7 @@
     <Compile Include="Models\ProdutoCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AcaoNaTela.cs" />
     <Compile Include="Services\DataBaseSqlServer.cs" />
     <Compile Include="Views\frmClienteCadastroView.cs">
       <SubType>Form</SubType>
