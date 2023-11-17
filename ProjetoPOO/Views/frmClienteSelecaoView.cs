@@ -95,23 +95,20 @@ namespace ProjetoPOO.Views
             //Sempre confirmar a exclusão do registro
             //Nunca excluir diretamente
 
-            if(dgvRegistros.SelectedRows.Count == 0)
-                MessageBox.Show("Nenhum registro selecionado.",
-                    "Informação", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            else
+            //A rotina Excluir espera o ID do registro
+            //como parametro, ou seja
+            //Para executar a exclusão do registro, é 
+            //preciso identificar o ID do registro selecionado
+            Cliente clienteSelecionado = RecuperarCliente();
+
+            if (clienteSelecionado != null)
             {
                 if(MessageBox.Show(
                     "Deseja realmente excluir o registro?",
                     "Confirmação", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    //A rotina Excluir espera o ID do registro
-                    //como parametro, ou seja
-                    //Para executar a exclusão do registro, é 
-                    //preciso identificar o ID do registro selecionado
-                    Cliente clienteSelecionado =
-                        (dgvRegistros.SelectedRows[0].DataBoundItem as Cliente);
+                    
 
                     ClienteController clienteController = new ClienteController();
 
@@ -129,9 +126,26 @@ namespace ProjetoPOO.Views
                             MessageBoxIcon.Warning);
                 }
             }
-
-
         }
+
+        private Cliente RecuperarCliente()
+        {
+            if (dgvRegistros.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Nenhum registro selecionado.",
+                    "Informação", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return null;
+            }
+            else
+            {
+                //Este método recupera o objeto da linha 
+                //selecionada na Grade
+                return dgvRegistros.SelectedRows[0].DataBoundItem
+                as Cliente;
+            }
+        }
+
 
         private void frmClienteSelecaoView_Load(object sender, EventArgs e)
         {
@@ -140,24 +154,31 @@ namespace ProjetoPOO.Views
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            ChamarTelaCadastro(AcaoNaTela.Inserir);
+            ChamarTelaCadastro(AcaoNaTela.Inserir, null);
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            ChamarTelaCadastro(AcaoNaTela.Alterar);
+            ChamarTelaCadastro(AcaoNaTela.Alterar, RecuperarCliente());
         }
 
-        private void ChamarTelaCadastro(AcaoNaTela acaoTela)
+        private void ChamarTelaCadastro(
+            AcaoNaTela acaoTela, Cliente cliente)
         {
             frmClienteCadastroView frm = 
-                new frmClienteCadastroView(acaoTela);
+                new frmClienteCadastroView(acaoTela, cliente);
             frm.ShowDialog();
+
+            //Ignorar quando a ação for Visualizar
+            //Qualquer ação diferente de Visualizar
+            //A grade será atualizada
+            if (acaoTela != AcaoNaTela.Visualizar)
+                Pesquisar();
         }
 
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
-            ChamarTelaCadastro(AcaoNaTela.Visualizar);
+            ChamarTelaCadastro(AcaoNaTela.Visualizar, RecuperarCliente());
         }
     }
 }

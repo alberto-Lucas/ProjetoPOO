@@ -97,10 +97,31 @@ namespace ProjetoPOO.Views
                 ClienteController clienteController = 
                     new ClienteController();
 
-                int idCadastro = clienteController.Inserir(cliente);
+
+                int idCadastro = 0;
+
+                if (acaoSelecionada == AcaoNaTela.Inserir)
+                    idCadastro = clienteController.Inserir(cliente);
+                else
+                {
+                    cliente.IdCliente = int.Parse(txtId.Text);
+                    idCadastro = clienteController.Alterar(cliente);
+                }
+
                 if (idCadastro > 0)
                 {
-                    txtId.Text = idCadastro.ToString();
+                    //o txtID sempre estara vazio quando for 
+                    //um cadastro novo
+                    //caso seja uma alteração o campo irá apresenta
+                    //o ID do registro
+                    //por tanto se o campo ja esta preenchido
+                    //não preciso atribuir o valor retornado
+                    //do banco de dados
+                    //Porém se for um cadastro novo
+                    //é preciso apresentar o ID do novo cadastro
+                    //no txtID
+                    if(string.IsNullOrEmpty(txtId.Text))
+                        txtId.Text = idCadastro.ToString();
 
                     MessageBox.Show("Registro salvo com sucesso!",
                         "Informação", MessageBoxButtons.OK,
