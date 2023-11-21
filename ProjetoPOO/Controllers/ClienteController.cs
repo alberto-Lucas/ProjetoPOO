@@ -10,8 +10,10 @@ namespace ProjetoPOO.Controllers
         #region Variaveis Locais
         //Variavel local e privada que faz o acesso ao 
         //banco de dados e executa os comandos.
-        DataBaseSqlServer dataBase 
-            = new DataBaseSqlServer();
+        //DataBaseSqlServer dataBase = new DataBaseSqlServer();
+
+        //DataBaseSqlServer dataBase = new DataBaseSqlServer();
+        DataBaseMySQL dataBase = new DataBaseMySQL();
         #endregion
 
         #region Inserir
@@ -44,7 +46,7 @@ namespace ProjetoPOO.Controllers
             dataBase.AdicionarParametros("@Telefone", cliente.Telefone);
 
             //Solicita a camada de banco de dados a execução da query
-            dataBase.ExececutarManipulacao(CommandType.Text, queryInserir);
+            dataBase.ExecutarManipulacao(CommandType.Text, queryInserir);
             //Nesse momento o meu comando é executado no banco de dados
 
             //Executar um comando no banco de dados, para recupear o ID criado
@@ -76,7 +78,7 @@ namespace ProjetoPOO.Controllers
             dataBase.AdicionarParametros("@Telefone", cliente.Telefone);
             dataBase.AdicionarParametros("@IdCliente", cliente.IdCliente);
 
-            return dataBase.ExececutarManipulacao(
+            return dataBase.ExecutarManipulacao(
                 CommandType.Text, queryAlterar);
         }
         #endregion
@@ -91,7 +93,7 @@ namespace ProjetoPOO.Controllers
             dataBase.LimparParametros();
             dataBase.AdicionarParametros("@IdCliente", IdCliente);
 
-            return dataBase.ExececutarManipulacao(
+            return dataBase.ExecutarManipulacao(
                 CommandType.Text, queryApagar);
         }
         #endregion

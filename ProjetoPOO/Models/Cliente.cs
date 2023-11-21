@@ -13,5 +13,12 @@ namespace ProjetoPOO.Models
         public string CPF { get; set; }
         public DateTime DtNascimento { get; set; }
         public string Telefone { get; set; }
+        public string IdNomeCliente
+        {
+            get
+            {
+                return IdCliente.ToString() + " - " + Nome;
+            }
+        }
     }
 }
