@@ -57,7 +57,7 @@ namespace ProjetoPOO.Services
         //Método pulico que executa comandos
         //INSERT, UPDATE e DELETE
         //Retorna a quantidade de linhas afetadas
-        public int ExececutarManipulacao(
+        public int ExecutarManipulacao(
             CommandType commandType,
             string nomeStoredProcedureOuTextpSql)
         {

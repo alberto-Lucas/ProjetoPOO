@@ -24,16 +24,16 @@ namespace ProjetoPOO.Views
             clienteSelecionado = cliente;
 
             if (acaoSelecionada == AcaoNaTela.Inserir)
-                this.Text = "Cadastrar";
+                this.Text = "Cadastrar Cliente";
             else
             {
                 CarregarDados();
 
                 if (acaoSelecionada == AcaoNaTela.Alterar)
-                    this.Text = "Alterar";
+                    this.Text = "Alterar Cliente";
                 else
                 {
-                    this.Text = "Visualizar";
+                    this.Text = "Visualizar Cliente";
                     DesabilitarCampos();
                 }
             }
@@ -136,6 +136,19 @@ namespace ProjetoPOO.Views
                 MessageBox.Show("Preencha os campos corretamente", 
                     "Atenção", MessageBoxButtons.OK, 
                     MessageBoxIcon.Warning); 
+        }
+
+        private void frmClienteCadastroView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (acaoSelecionada != AcaoNaTela.Visualizar)
+                if (MessageBox.Show("Deseja realmente sair?", "Confirmação...", 
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                    e.Cancel = true;            
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

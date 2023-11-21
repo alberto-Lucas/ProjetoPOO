@@ -14,12 +14,33 @@ namespace ProjetoPOO.Views
 {
     public partial class frmClienteSelecaoView : Form
     {
-        public frmClienteSelecaoView()
+        //Atributo público necessário para retornar
+        //o cliente selecionado quando o usuário clicar
+        //no botão "Selecionar".
+        public Cliente clienteSelecao;
+
+        //O parâmetro "ExibirBotaoSelecionar" é necessário
+        //para sabermos se o botão "Selecionar" deve ser
+        //exibido ou não. O valor padrão dele é "false",
+        //portanto, se quem chamar o construtor não passar
+        //o valor "true", o botão não será exibido.
+        public frmClienteSelecaoView(bool ExibirBotaoSelecionar = false)
         {
             InitializeComponent();
 
-            //Desativar a criação automatica de colunas
+            //Essa linha é necessária para que o DataGridView não
+            //crie as colunas de forma automática, exibindo todas
+            //as propriedades do objeto. A intenção é nós definirmos
+            //somente algumas colunas para serem exibidas.
+            //Para adicionar as colunas, clique no DataGridView e clique
+            //na setinha preta que aparece no canto superior direito dele.
+            //Clique em Edit Column e adicione as colunas que desejar.
+            //Após adicionar as colunas (e ainda na tela de edição de coluna)
+            //selecione uma coluna e na propriedade "DataPropertyName" coloque
+            //o nome da propriedade que você quer exibir naquela coluna (Nome, Telefone...).
+            //O nome da propriedade precisa ser igual ao que existe na camada Models.
             dgvRegistros.AutoGenerateColumns = false;
+            btnSelecionar.Visible = ExibirBotaoSelecionar;
         }
 
         //Método privado para pesquisa de registro
@@ -179,6 +200,18 @@ namespace ProjetoPOO.Views
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
             ChamarTelaCadastro(AcaoNaTela.Visualizar, RecuperarCliente());
+        }
+
+        private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            Selecionar();
+        }
+
+        private void Selecionar()
+        {
+            clienteSelecao = RecuperarCliente();
+            if (clienteSelecao != null)
+                this.DialogResult = DialogResult.OK;
         }
     }
 }
